@@ -30,4 +30,20 @@ class Product extends Model
         'name' => 'array',
         'description' => 'array',
     ];
+
+    public function getPrice(){
+        $price = $this->price;
+        if(!$this->store->is_vat_included){
+            $price = $this->price + ($this->store->vat * $this->price / 100);
+        }
+        return $price;
+    }
+
+    /**
+     * Get the store that owns the product.
+     */
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
+    }
 }

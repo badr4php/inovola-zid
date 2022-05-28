@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Merchants\StoreController;
 use App\Http\Controllers\Merchants\ProductController;
+use App\Http\Controllers\Consumers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,5 @@ Route::middleware('auth')->group(function () {
     Route::post('store', [StoreController::class, 'store']);
     Route::put('store/{store}', [StoreController::class, 'update']);
     Route::post('product', [ProductController::class, 'store']);
+    Route::post('cart/add', [CartController::class, 'add']);
 });
