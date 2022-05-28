@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('vat', 8, 2)->nullable();
             $table->decimal('shipping_cost', 8, 2)->nullable();
             $table->boolean('is_vat_included')->default(0);
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

@@ -30,4 +30,11 @@ class CreateStoreRequest extends FormRequest
             'is_vat_included' => ['boolean', 'required_without:vat'],
         ];
     }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'user_id'    => auth()->user()->id,
+        ]);
+    }
 }

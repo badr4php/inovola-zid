@@ -31,7 +31,8 @@ class StoreController extends Controller
      */
     public function update(UpdateStoreRequest $request, Store $store)
     {
-        $store->update($request->all());
+        $this->authorize('update', $store);
+        $store->update($request->except(['user_id']));
         return new StoreResource($store->find($store->id));
     }
 }

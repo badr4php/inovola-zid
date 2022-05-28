@@ -19,5 +19,6 @@ class Store extends Model
         'vat',
         'shipping_cost',
         'is_vat_included',
+        'user_id',
     ];
 }
