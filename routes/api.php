@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Merchants\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,7 @@ use App\Http\Controllers\Auth\AuthController;
 */
 Route::post('register', [RegisteredUserController::class, 'store']);
 Route::post('login', [AuthController::class, 'login']);
+Route::middleware('auth')->group(function () {
+    Route::post('store', [StoreController::class, 'store']);
+    Route::put('store/{store}', [StoreController::class, 'update']);
+});
