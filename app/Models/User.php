@@ -12,15 +12,21 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const MERCHANT_ROLE = 'merchant';
+    const CONSUMER_ROLE = 'consumer';
+    const ROLES = [self::MERCHANT_ROLE, self::CONSUMER_ROLE];
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'role',
     ];
 
     /**
