@@ -41,7 +41,6 @@ class StorePolicy
      */
     public function create(User $user)
     {
-        $this->authorize('create', Store::class);
         return $user->role === User::MERCHANT_ROLE;
     }
 

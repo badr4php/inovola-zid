@@ -18,6 +18,7 @@ class StoreController extends Controller
      */
     public function store(CreateStoreRequest $request)
     {
+        $this->authorize('create', Store::class);
         $store = Store::create($request->all());
         return new StoreResource($store);
     }
